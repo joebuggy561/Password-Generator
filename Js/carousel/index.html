@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carousel</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+
+    .sliders{
+        margin: 150px auto;
+        height: 50vh;
+        width: 40%;
+        background-color: rgba(72, 50, 1, 1);
+        position: absolute;
+
+    }
+ 
+
+    .school-name{
+        padding: 20px;
+        text-align: center;
+    }
+
+    hr{
+        border: 2px solid lightgray;
+    }
+
+    .main-body{
+        display: flex;
+        justify-content: space-between;
+        padding: 0 40px;
+    }
+
+    .main-body-one{
+        width: 50%;
+    }
+
+    .main-body-two{
+        margin-top:  40px;
+        width: 50%;
+    }
+
+    
+
+    .neymar_img{
+        border-radius: 50%;
+        height: 60%;
+        width: 100%;
+        padding: 20px;
+    }
+
+    .allslides{
+        padding: 0 30px;
+        position: relative;
+        margin: auto;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+
+
+    th{
+        padding: 10px;
+        font-size: 25px;
+        font-weight: 900;
+        text-align: center;
+    }
+
+    td{
+        padding: 10px;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .button-div{
+        width: 100%;
+        margin-top: 600px;
+        text-align: center;
+        gap: 30px;
+        position: absolute;
+        padding: 10px;
+    }
+
+    .prev{
+        padding: 20px;
+        font-size: 19px;
+        margin: 15px;
+    }
+
+    .next{
+        padding: 20px;
+        font-size: 19px;
+        margin: 15px; 
+        
+    }
+</style>
+<body>
+    <main class="main-container">
+        <div class="allslides">
+            <div class="sliders">
+                <div class="school-name"><h1>SQI Student Identity Card</h1>
+                </div>
+                <hr>
+                <div class="main-body" id="main">
+                
+                </div>
+            </div>
+        </div>
+    </main> 
+    <div class="button-div">
+        <button class="prev" type="menu" id="previous" onclick="previous()">Previous</button>
+        <button class="next" type="menu" id="next" onclick="next()">Next</button>
+    </div>  
+</body>
+<script>
+
+// enter each card into an array 
+
+let data =  [{
+    name: 'Name: James Bond',
+    program: 'Program: Javascript',
+    year: 'Year: Year 1',
+    sex: 'Sex: Male',
+    entry: 'Entry: 2024',
+    model: 'Model: Blue',
+    img: 'messi.jpg'
+},
+    {name: 'Name: John Doe',
+    program: 'Program: MongoDb',
+    year: 'Year: Year 1',
+    sex: 'Sex: Male',
+    entry: 'Entry: 2024',
+    model: 'Model: Yellow',
+    img: 'ronaldo.jpg'
+},
+    {name: 'Name: Michael Blacks',
+    program: 'Program: SQL',
+    year: 'Year: Year 1',
+    sex: 'Sex: Male',
+    entry: 'Entry: 2024',
+    model: 'Model: Brown',
+    img: 'neymar.jpg'
+},
+]
+
+// Event delegation for each element capture in the function displa() /div
+
+let name = document.getElementById('name');
+let program = document.getElementById('program');
+let sex = document.getElementById('sex');
+let entry = document.getElementById('entry');
+let model = document.getElementById('model');
+let year = document.getElementById('year');
+let img = document.getElementById('img');
+
+// set first index to 0
+let index = 0;
+
+//call display function display the content of each value
+display()
+
+// write a conditional statement that once the event button is clicked it allows the display() to display the last value of the array
+function previous(){
+    if(index == 0){
+        index = data.length -1
+        display()
+    }else{
+        index --;
+        display()
+    }
+}
+
+// write a conditional statement that once the event button is clicked it allows the display() to add a display to the last value of the array
+function next(){
+    if(index === data.length - 1){
+        index = 0
+        display()
+    }else{
+        index ++;
+        display()
+    }
+}
+
+
+// write a display() to display content of the array
+
+function display(){
+    main.innerHTML =        `<div class="main-body-one">
+                                <img src="${data[index].img}" alt="#" class="neymar_img" id='img'>
+
+                            </div>
+                            <div class="main-body-two">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td id='name'>${data[index].name}</td>
+                                        </tr>
+                                    </tbody>
+                                    <tbody>
+                                        <tr>
+                                            <td id='program'>${data[index].program}</td>
+                                        </tr>
+                                    </tbody>
+                                    <tbody>
+                                        <tr>
+                                            <td id='program'>${data[index].program}</td>
+                                        </tr>
+                                    </tbody>
+                                    <tbody>
+                                        <tr>
+                                            <td id='sex'>${data[index].sex}</td>
+                                        </tr>
+                                    </tbody>
+                                    <tbody>
+                                        <tr>
+                                            <td id='entry'>${data[index].entry}</td>
+                                        </tr>
+                                    </tbody>
+                                    <tbody>
+                                        <tr>
+                                            <td id='model'>${data[index].model}</td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>`
+}
+
+
+
+</script>
+</html>
